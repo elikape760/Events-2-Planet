@@ -32,7 +32,7 @@ private
     end
 
     def comment_params
-        params.permit(:name, :comment, :date)
+        params.permit(:name, :comment, :date, :event_id)
     end
 
 end

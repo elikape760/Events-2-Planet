@@ -36,7 +36,7 @@ main {
   margin: 1rem;
 }
 
-form {
+.authForm {
   background-color: #fff8e7;
   border: 1px solid salmon;
   display: flex;
@@ -52,4 +52,24 @@ form input {
 
 form button[type="submit"] {
   width: 40%;
+}
+
+#footercontainer {
+  position: relative;
+  margin-top: 10rem;
+  max-width: 1600px;
+  text-align: center;
+}
+
+#footer {
+  display: flex;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  opacity: .60;
+}
+
+#whitespace{
+  display: block;
+  height: 50px;
 }

@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-    has_many :events
-    has_many :users, through: :events
+    belongs_to :event
+    
 
     validates :comment, presence: true
 end

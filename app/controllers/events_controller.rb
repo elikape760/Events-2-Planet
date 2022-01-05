@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
     before_action :find_event, only: [:show, :update, :destroy]
-    before_action :authorize, only: [:destroy]
+    # before_action :authorize, only: [:destroy]
 
     def index
         events = Event.all
@@ -33,11 +33,12 @@ private
     end
 
     def event_params
-        params.permit(:name, :date, :time, :location, :description, :user_id, :comment_id)
+        params.permit(:name, :date, :time, :location, :description, :user_id)
     end
 
-    def authorize
-        return render json: {error: "Not Authorized"}, status: :unauthorized unless session.include? :user_id
-    end
+    # def authorize
+    #     byebug
+    #    render json: {error: "Not Authorized"}, status: :unauthorized unless @event.user == User.find(params[:user_id])
+    # end
 
 end

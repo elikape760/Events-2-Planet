@@ -8,6 +8,7 @@ import Login from "./Login";
 import SignUp from "./SignUp";
 import Home from "./Home";
 import NewEvent from "./NewEvent";
+import Footer from "./Footer";
 
 
 
@@ -28,7 +29,6 @@ function App() {
     fetch('http://localhost:3000/events')
       .then(resp => resp.json())
       .then(events => {
-        // console.log(data);
         setEvents(events)
       });
   }, []);
@@ -38,9 +38,39 @@ function App() {
     setEvents(updatedEventArray);
   }
 
+  function handleNewComment(newComment) {
+    const foundEvent = events.find((event) => event.id === newComment.event_id )
+    const alteredEvent = {...foundEvent, comments: [...foundEvent.comments, newComment]}
+    const newEvents = events.map((event) => {
+      if (event.id === alteredEvent.id) {
+        return alteredEvent
+      } else {
+        return event
+      }
+    });
+    setEvents(newEvents)
+  }
+
+  function handleDeletEevent(id) {
+    const updatedEventsArray = events.filter((event) => event.id !== id);
+    setEvents(updatedEventsArray);
+  }
+
+  function handleUpdatedEvent(updatedEvent) {
+    const updatedEventsArray = events.map((event) => {
+      if (event.id === updatedEvent.id) {
+        return updatedEvent;
+      } else {
+        return event;
+      }
+    });
+    setEvents(updatedEventsArray)
+  }
+
   const displayedEvents = events.filter((event) => {
-    return event.name.toLowerCase().includes(searchTerm.toLowerCase());
-  });
+    return event.name.toLowerCase().includes(searchTerm.toLowerCase())
+  })
+
 
   return (
     <div className="App">
@@ -52,9 +82,26 @@ function App() {
       <main>
         {user ? (
           <Switch>
-            <Route path="/">
-              <Home user={user} />
+            
+
+            <Route path="/home/new">
+              <NewEvent
+                handleNewEvent={handleNewEvent}
+                user={user}
+                />
             </Route>
+
+            <Route path="/">
+              <Home />
+              <EventList
+                events={displayedEvents}
+                handleDeletEevent={handleDeletEevent}
+                handleUpdatedEvent={handleUpdatedEvent}
+                handleNewComment={handleNewComment}
+                user={user}
+              />
+            </Route>
+
           </Switch>
         ) : (
           <Switch>
@@ -62,24 +109,25 @@ function App() {
             <Route path="/signup">
               <SignUp setUser={setUser} />
             </Route>
-            
+
             <Route path="/login">
               <Login setUser={setUser} />
             </Route>
 
-            <Route path="/home/new">
-              <NewEvent
-                handleNewEvent={handleNewEvent} />
+            <Route path="/">
+              <Home user={user} />
+              <EventList
+                events={displayedEvents}
+                handleDeletEevent={handleDeletEevent}
+                handleUpdatedEvent={handleUpdatedEvent}
+                handleNewComment={handleNewComment}
+                user={user}
+              />
             </Route>
 
-            <Route path="/">
-              <Home />
-              <EventList
-                events={displayedEvents} />
-            </Route>
-            
           </Switch>
         )}
+        <Footer />
       </main>
 
     </div>

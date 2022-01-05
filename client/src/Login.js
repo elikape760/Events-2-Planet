@@ -23,7 +23,7 @@ function Login({ setUser }) {
 
     return (
         <div>
-        <form onSubmit={handleSubmit}>
+        <form className="authForm" onSubmit={handleSubmit}>
             <h1>Login</h1>
             <label htmlFor="username">Username</label>
             <input

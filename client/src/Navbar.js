@@ -25,12 +25,15 @@ function Navbar({ user, setUser, searchTerm, setSearchTerm }) {
             </div>
             <div>
                 {user ? (
+                    <>
+                    <Link to="/home/new">Add New Event</Link>
                     <button onClick={handleLogoutClick}>Logout</button>
+                    </>
+                    
                 ) : (
                     <>
                         <Link to="/signup">Signup</Link>
                         <Link to="/login">Login</Link>
-                        <Link to="/home/new">Add New Event</Link>
                     </>
                 )}
             </div>

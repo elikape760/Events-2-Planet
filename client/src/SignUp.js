@@ -1,6 +1,9 @@
 import { useState } from "react"
 
 function SignUp ({setUser}) {
+    const [first_name, setFirst_name] = useState("")
+    const [last_name, setLast_name] = useState("")
+    const [origin, setOrigin] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -13,6 +16,8 @@ function SignUp ({setUser}) {
                 "Content-Type" : "application/json",
             },
             body: JSON.stringify({
+                first_name,
+                last_name,
                 username,
                 password,
                 password_confirmation: passwordConfirmation,                
@@ -28,8 +33,32 @@ function SignUp ({setUser}) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form className="authForm" onSubmit={handleSubmit}>
                 <h1>Signup</h1>
+                <label htmlFor="first_name">First Name</label>
+                <input
+                    type="text"
+                    id="first_name"
+                    autoComplete="off"
+                    value={first_name}
+                    onChange={(e) => setFirst_name(e.target.value)} 
+                />
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                    type="text"
+                    id="last_name"
+                    autoComplete="off"
+                    value={last_name}
+                    onChange={(e) => setLast_name(e.target.value)} 
+                />
+                <label htmlFor="origin">Origin</label>
+                <input
+                    type="text"
+                    id="origin"
+                    autoComplete="off"
+                    value={origin}
+                    onChange={(e) => setOrigin(e.target.value)} 
+                />
                 <label htmlFor="username">Username</label>
                 <input
                     type="text"
