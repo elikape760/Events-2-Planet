@@ -4,7 +4,7 @@ function Login({ setUser }) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    function handleSubmit(e) {
+    function handleLoging(e) {
         e.preventDefault();
         fetch("/login", {
             method: "POST",
@@ -23,7 +23,7 @@ function Login({ setUser }) {
 
     return (
         <div>
-        <form className="authForm" onSubmit={handleSubmit}>
+        <form className="authForm" onSubmit={handleLoging}>
             <h1>Login</h1>
             <label htmlFor="username">Username</label>
             <input

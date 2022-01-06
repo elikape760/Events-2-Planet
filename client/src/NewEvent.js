@@ -33,8 +33,13 @@ function NewEvent({ handleNewEvent, user }) {
   }
 
   return (
+
     <div className="new-Event-form">
-      <h2>New Event</h2>
+      <div>
+
+      </div>
+      <h2 id="new-event-title" >New Event</h2>
+      <img id="new-event-img" src="https://images.assetsdelivery.com/compings_v2/surfupvector/surfupvector2006/surfupvector200600845.jpg" alt="" />
       <form className="authForm" onSubmit={handleSubmit}>
         <input
           type="text"

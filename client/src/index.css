@@ -1,16 +1,18 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 900px;
+  max-width: auto;
+  /* height: 100%; */
+  color: aqua;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 header {
@@ -22,51 +24,162 @@ header {
 
 header a,
 header button {
-  font-size: 1rem;
+  font-size: 0.8rem;
+  border-radius: 100px;
   display: inline-block;
-  background-color: #fff8e7;
-  border: 1px solid salmon;
+  background-color: #f8f7f5;
+  border: 1px solid rgb(12, 12, 11);
   margin: 1rem;
-  padding: 1rem;
+  padding: 0.6rem;
   text-decoration: none;
-  color:salmon;
+  color:rgb(14, 13, 13);
   cursor: pointer;
 }
+
+.nav-link {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  /* position: absolute; */
+  /* top: -70%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+}
+
 main {
   margin: 1rem;
+  /* background-color: #7494be; */
+  background-image: url("https://thumbs.dreamstime.com/t/vintage-cartoon-style-happy-pairs-dancers-isolated-men-women-performing-dance-competition-club-school-studio-party-male-153907241.jpg");
+  background-size: contain;
+  position: relative;
+  background-size: 50em;
+  min-height: 50em;
 }
 
 .authForm {
   background-color: #fff8e7;
-  border: 1px solid salmon;
+  border: 1px solid rgb(20, 20, 20);
   display: flex;
   flex-direction: column;
   width: 400px;
-  margin: 0 auto;
-  padding: 0 1rem 1rem;
+  margin: 1rem auto ;
+  padding: 1rem 1rem 1rem;
 }
 
 form input {
   margin: 0.25rem 0;
+  display: flex;
 }
 
 form button[type="submit"] {
-  width: 40%;
+  width: 40;
+}
+
+.img-header {
+  /* border: red solid; */
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  /* justify-content: space-evenly; */
+  
+  background-image: url("https://media.istockphoto.com/photos/high-resolution-planet-earth-view-picture-id824379206?b=1&k=20&m=824379206&s=170667a&w=0&h=anTq2nJwCVCPopLYJ3ukl4L4tSUkZddiWoZNTjOciZk=");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; 
+}
+
+/* #earth {
+  width: 100%;
+  background-size: cover;
+} */
+
+.header-text {
+  display: flex;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -500%);
+  color: rgb(255, 255, 255);
+}
+
+.searchbar {
+  padding-top: 10px;
+  padding-left: 10px;
+  color: white;
+}
+
+.ui.centered.card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 10px 11px -1px rgba(0, 0,0, .6);
+  transition: background .3s,border .3s,border-radius .3s,box-shadow .3s;
+  padding: 20px 15px;
+}
+
+.ui.comments .comment {
+  position: relative;
+  background: 0 0;
+  margin: 0.5em 0 0;
+  padding: 0.5em 0 0;
+  border: none;
+  border-top: none;
+  line-height: 1.2;
+  height: 10em;
+  overflow: auto;
+}
+
+.comment--button {
+  margin-bottom: 8px;
+}
+
+.new-Event-form {
+  padding-left: 10px;
+  /* text-align: left; */
+  padding-bottom: 1em;
+  padding-top: 1em;
+  
+}
+
+#new-event-title {
+  /* padding: 600%; */
+  margin-right: 80%;
+  transform: translate(230%, -40%);
+  background-image: url("");
+
+}
+
+#new-event-img {
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: relative; 
+  transform: translate(115%, -10%);
 }
 
 #footercontainer {
   position: relative;
   margin-top: 10rem;
   max-width: 1600px;
-  text-align: center;
+  text-align: center; 
 }
 
-#footer {
+#footer > ul{
   display: flex;
   text-align: center;
   position: relative;
   bottom: 0;
   opacity: .60;
+  padding: 0px 10px;
+
+}
+
+.social-icons {
+justify-content: space-evenly;
+list-style: none;
+flex-direction: row;
 }
 
 #whitespace{

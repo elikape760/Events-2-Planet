@@ -8,7 +8,7 @@ function SignUp ({setUser}) {
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
 
-    function handleSubmit(e) {
+    function handleSignup(e) {
         e.preventDefault();
         fetch("/signup", {
             method: "POST", 
@@ -33,7 +33,7 @@ function SignUp ({setUser}) {
 
     return (
         <div>
-            <form className="authForm" onSubmit={handleSubmit}>
+            <form className="authForm" onSubmit={handleSignup}>
                 <h1>Signup</h1>
                 <label htmlFor="first_name">First Name</label>
                 <input

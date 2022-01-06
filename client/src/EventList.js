@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react'
 
 function EventList({ events, handleDeletEevent, handleUpdatedEvent, handleNewComment, user }) {
     return (
-        <Grid  centered style={{width: "100%", margin: 'auto'}} columns={2}>
+        <Grid columns={3}>
             {events.map((event) => {
                 return (
                     <EventCard

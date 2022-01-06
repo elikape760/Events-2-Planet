@@ -3,11 +3,7 @@ import { useState } from 'react'
 
 function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComment, user }) {
 
-    // const [name, setName] = useState("")
     const [comment, setComment] = useState("")
-    // const [date, setDate] = useState("")
-
-
     const [updatedDate, setUpdatedDate] = useState("")
     const [updatedTime, setUpdatedTime] = useState("")
     const [updatedLocation, setUpdatedLocation] = useState("")
@@ -30,6 +26,9 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
             .then((data) => {
                 handleUpdatedEvent(data);
             })
+        setUpdatedDate("")
+        setUpdatedTime("")
+        setUpdatedLocation("")
     }
 
     function handleDeleteClick(e) {
@@ -37,9 +36,9 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
 
         fetch(`http://localhost:3000/events/${event.id}`, {
             method: "DELETE",
-            body: JSON.stringify({user_id:user.id}) 
+            body: JSON.stringify({ user_id: user.id })
 
-            
+
         })
             .then((r => r.json()))
             .then(data => handleDeletEevent(data));
@@ -63,11 +62,13 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
         })
             .then((r) => r.json())
             .then((newComment) => handleNewComment(newComment));
+
+        setComment("")
     }
 
     return (
         <Grid.Column>
-            <Card>
+            <Card centered >
                 <Card.Content>
                     <Card.Header>{event.name}</Card.Header>
                     <Card.Description>{event.date}</Card.Description>
@@ -76,7 +77,7 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
                     <Card.Description>{event.description}</Card.Description>
                     <Comment.Group>
                         <Comment>
-                            <Comment.Avatar src='/images/avatar/small/elliot.jpg' />
+                            <Comment.Avatar src='https://as1.ftcdn.net/v2/jpg/01/89/44/46/1000_F_189444626_ErFjW1mpwCCUEdnJ4ZnJfoLTk66Qf5Tj.jpg' />
                             <Comment.Content>
                                 {event.comments.map((comment) => {
                                     return (
@@ -88,11 +89,10 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
                     </Comment.Group>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button onClick={handleDeleteClick}>Delete Event</Button>
+                    <Button color='youtube' onClick={handleDeleteClick}>Delete Event</Button>
                 </Card.Content>
                 <div className="new-Event-form">
-                    <p>Add Comment</p>
-                    <form onSubmit={handleCommentSubmit}>
+                    <form className='comment--button' onSubmit={handleCommentSubmit}>
                         <Input
                             type="text"
                             name="Comment"
@@ -100,7 +100,31 @@ function EventCard({ event, handleDeletEevent, handleUpdatedEvent, handleNewComm
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
                         />
-                        <Button type="submit">Add Comment</Button>
+                        <Button primary type="submit">Add Comment</Button>
+                    </form>
+                    <form onSubmit={updateEventCard}>
+                        <Input
+                            type="text"
+                            name="date"
+                            placeholder="Date"
+                            value={updatedDate}
+                            onChange={(e) => setUpdatedDate(e.target.value)}
+                        />
+                        <Input
+                            type="text"
+                            name="time"
+                            placeholder="Time"
+                            value={updatedTime}
+                            onChange={(e) => setUpdatedTime(e.target.value)}
+                        />
+                        <Input
+                            type="text"
+                            name="location"
+                            placeholder="Location"
+                            value={updatedLocation}
+                            onChange={(e) => setUpdatedLocation(e.target.value)}
+                        />
+                        <Button primary type="submit">Update Event</Button>
                     </form>
                 </div>
 

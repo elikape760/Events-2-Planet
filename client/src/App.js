@@ -68,7 +68,7 @@ function App() {
   }
 
   const displayedEvents = events.filter((event) => {
-    return event.name.toLowerCase().includes(searchTerm.toLowerCase())
+    return event.location.toLowerCase().includes(searchTerm.toLowerCase())
   })
 
 
@@ -82,38 +82,12 @@ function App() {
       <main>
         {user ? (
           <Switch>
-            
-
             <Route path="/home/new">
               <NewEvent
                 handleNewEvent={handleNewEvent}
                 user={user}
                 />
             </Route>
-
-            <Route path="/">
-              <Home />
-              <EventList
-                events={displayedEvents}
-                handleDeletEevent={handleDeletEevent}
-                handleUpdatedEvent={handleUpdatedEvent}
-                handleNewComment={handleNewComment}
-                user={user}
-              />
-            </Route>
-
-          </Switch>
-        ) : (
-          <Switch>
-
-            <Route path="/signup">
-              <SignUp setUser={setUser} />
-            </Route>
-
-            <Route path="/login">
-              <Login setUser={setUser} />
-            </Route>
-
             <Route path="/">
               <Home user={user} />
               <EventList
@@ -124,12 +98,29 @@ function App() {
                 user={user}
               />
             </Route>
-
+          </Switch>
+        ) : (
+          <Switch>
+            <Route path="/signup">
+              <SignUp setUser={setUser} />
+            </Route>
+            <Route path="/login">
+              <Login setUser={setUser} />
+            </Route>
+            <Route path="/">
+              <Home user={user} />
+              <EventList
+                events={displayedEvents}
+                handleDeletEevent={handleDeletEevent}
+                handleUpdatedEvent={handleUpdatedEvent}
+                handleNewComment={handleNewComment}
+                user={user}
+              />
+            </Route>
           </Switch>
         )}
-        <Footer />
       </main>
-
+      <Footer />
     </div>
   );
 }
